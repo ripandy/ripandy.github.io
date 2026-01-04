@@ -215,7 +215,7 @@
                 
                 <!-- Radar Chart Container -->
                 <div class="w-full md:w-1/2 flex justify-center">
-                    <div class="relative w-full max-w-md bg-slate-800/30 p-4 rounded-full border border-slate-700/50">
+                    <div class="relative w-full max-w-lg bg-slate-800/20 p-8 rounded-full border border-slate-700/50 backdrop-blur-sm">
                         <canvas id="skillsChart"></canvas>
                     </div>
                 </div>
@@ -578,8 +578,15 @@
                     }]
                 },
                 options: {
+                    // Added layout padding to prevent labels from getting cropped
+                    layout: {
+                        padding: 5
+                    },
                     scales: {
                         r: {
+                            // Enlarges the chart area relative to the canvas
+                            suggestedMin: 0,
+                            suggestedMax: 100,
                             angleLines: {
                                 color: 'rgba(255, 255, 255, 0.1)'
                             },
@@ -589,16 +596,15 @@
                             pointLabels: {
                                 color: '#94a3b8',
                                 font: {
-                                    size: 12,
-                                    family: 'Inter'
+                                    size: 13,
+                                    family: 'Inter',
+                                    weight: '600'
                                 }
                             },
                             ticks: {
                                 display: false,
                                 maxTicksLimit: 5
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100
+                            }
                         }
                     },
                     plugins: {
@@ -606,6 +612,7 @@
                             display: false
                         }
                     },
+                    responsive: true,
                     maintainAspectRatio: true
                 }
             });
