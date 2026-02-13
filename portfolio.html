@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Portfolio | Pandy (Ripandy Adha Yusuf)</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        accent: '#3b82f6',
+                        accent2: '#8b5cf6',
+                        codeBg: '#1e293b',
+                        textGray: '#94a3b8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'Consolas', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold tracking-wider text-white">RIPANDY<span class="text-accent">.ADHA</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="index.html#skills" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="portfolio.html" class="text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="index.html#experience" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Journey</a>
+                        <a href="index.html#contact" class="bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Say Hello</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden bg-dark border-b border-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="index.html#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="portfolio.html" class="text-white block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="index.html#experience" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Journey</a>
+                <a href="index.html#contact" class="text-accent hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Say Hello</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="pt-32 pb-12 bg-darker relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent2/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                Full <span class="text-gradient">Portfolio</span>
+            </h1>
+            <p class="text-xl text-textGray max-w-2xl mx-auto">
+                A comprehensive catalog of games, XR experiences, tools, and contributions across my career.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-6 bg-darker border-b border-slate-800 sticky top-16 z-40 backdrop-blur-md bg-darker/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-2">
+                <button onclick="filterProjects('all')" data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-slate-700 bg-accent text-white transition-all">All</button>
+                <button onclick="filterProjects('Game')" data-filter="Game" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-slate-700 text-gray-300 hover:text-white hover:border-accent transition-all">Game</button>
+                <button onclick="filterProjects('XR')" data-filter="XR" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-slate-700 text-gray-300 hover:text-white hover:border-accent transition-all">XR</button>
+                <button onclick="filterProjects('OSS')" data-filter="OSS" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-slate-700 text-gray-300 hover:text-white hover:border-accent transition-all">OSS</button>
+                <button onclick="filterProjects('Writing')" data-filter="Writing" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-slate-700 text-gray-300 hover:text-white hover:border-accent transition-all">Writing</button>
+                <button onclick="filterProjects('AI')" data-filter="AI" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-slate-700 text-gray-300 hover:text-white hover:border-accent transition-all">AI</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Content -->
+    <main class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- ============================================ -->
+            <!-- Aiming Inc. (2024 - Present) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="aiming">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Aiming Inc.</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2024 - Present</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Dragon Quest Tact -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,RPG">
+                        <a href="https://www.dragonquest.jp/tact/" target="_blank" class="block aspect-video overflow-hidden">
+                            <img src="images/DQTact.jpg" alt="Dragon Quest Tact" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div class="p-5">
+                            <a href="https://www.dragonquest.jp/tact/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Dragon Quest Tact</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">RPG</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Large-scale mobile tactical RPG based on the Dragon Quest franchise.</p>
+                            <div class="flex gap-3">
+                                <a href="https://www.dragonquest.jp/tact/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-globe mr-1.5"></i> Official
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aiming Tech Book Vol.5 -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Writing,Knowledge Sharing">
+                        <a href="https://techbookfest.org/product/jiet5kapFYFsJSBJdh91xj?productVariantID=fCVAAGTxb4V2yMsk32DSQS" target="_blank" class="block aspect-video overflow-hidden">
+                            <img src="images/techbook5.png" alt="Aiming Tech Book Vol.5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div class="p-5">
+                            <a href="https://techbookfest.org/product/jiet5kapFYFsJSBJdh91xj?productVariantID=fCVAAGTxb4V2yMsk32DSQS" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Aiming Tech Book Vol.5</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">Writing</span>
+                                <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">Knowledge Sharing</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Contributed Chapter 2: "Practical Use of Package Development in Unity" for the company's technical book at Tech Book Fest 18.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://techbookfest.org/product/jiet5kapFYFsJSBJdh91xj?productVariantID=fCVAAGTxb4V2yMsk32DSQS" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-book mr-1.5"></i> Tech Book Fest
+                                </a>
+                                <a href="https://developer.aiming-inc.com/writings/post-12873/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-blog mr-1.5"></i> Dev Blog
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kusoge Contest -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Solo,Unity">
+                        <a href="https://developer.aiming-inc.com/activities/post-11756/" target="_blank" class="block aspect-video bg-gradient-to-br from-green-600/30 to-yellow-600/30 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://developer.aiming-inc.com/activities/post-11756/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Kusoge Contest</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Solo Entries</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Solo</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Two entries for Aiming's internal kusoge (silly game) contest: "Bobakami" and "Hachi Tasu Niwa Juu".</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://developer.aiming-inc.com/activities/post-11756/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-blog mr-1.5"></i> Dev Blog
+                                </a>
+                                <a href="https://ripandy.github.io/AimingKusoge2024_Ochiru/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-play mr-1.5"></i> Bobakami
+                                </a>
+                                <a href="https://unityroom.com/games/hachi_juu" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-play mr-1.5"></i> Hachi Juu
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Kadinche Corporation (2018 - 2023) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="kadinche">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Kadinche Corporation</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2018 - 2023</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Yokai Megane -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,MR,HoloLens 2">
+                        <a href="https://www.kadinche.com/news/mizuki-museum2022/" target="_blank" class="block aspect-video overflow-hidden">
+                            <img src="images/yokai-megane.jpg" alt="Yokai Megane" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div class="p-5">
+                            <a href="https://www.kadinche.com/news/mizuki-museum2022/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Yokai Megane</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Lead Engineer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">MR</span>
+                                <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">HoloLens 2</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">MR tour guide experience overlaying digital spirits onto a real museum using HoloLens 2 and Visual Positioning Systems (VPS).</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.kadinche.com/news/mizuki-museum2022/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-newspaper mr-1.5"></i> News
+                                </a>
+                                <a href="https://dl.acm.org/doi/10.1145/3627050.3631567" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-file-lines mr-1.5"></i> ACM
+                                </a>
+                                <a href="https://ieeexplore.ieee.org/document/10108813" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-file-lines mr-1.5"></i> IEEE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAO Ex-Chronicle -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,SteamVR">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/CKzfk9-ixvc" title="SAO Ex-Chronicle Online Edition" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <a href="https://www.kadinche.com/work/sao-ex-chronicle/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">SAO Ex-Chronicle Online Edition</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">SteamVR</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">VR exhibition for the Sword Art Online franchise. An immersive online VR experience bringing the anime world to life.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.kadinche.com/work/sao-ex-chronicle/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-briefcase mr-1.5"></i> Works
+                                </a>
+                                <a href="https://www.sonymusicsolutions.co.jp/s/sms/news/detail/02000241?ima=0000&link=ROBO004" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-newspaper mr-1.5"></i> PR
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VR Devilman Exhibition -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,SteamVR">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/Z85Gp3lUkow" title="VR Devilman Exhibition" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <a href="https://www.kadinche.com/work/virtualutopia-devilman/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">VR Devilman Exhibition</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">SteamVR</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">VR exhibition for the Devilman franchise at Virtual Utopia. An immersive horror-themed VR experience.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.kadinche.com/work/virtualutopia-devilman/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-briefcase mr-1.5"></i> Works
+                                </a>
+                                <a href="https://virtualutopia.jp/s/v01/?ima=1427" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-globe mr-1.5"></i> Official
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simultaneous Playback System -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,System">
+                        <a href="https://dl.acm.org/doi/10.1145/3627050.3631567" target="_blank" class="block aspect-video bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
+                            <i class="fas fa-server text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://dl.acm.org/doi/10.1145/3627050.3631567" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Simultaneous Playback System</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Lead Engineer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">System</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Foundational system enabling synchronized VR playback across multiple headsets for large-scale VR exhibitions and events.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://dl.acm.org/doi/10.1145/3627050.3631567" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-file-lines mr-1.5"></i> Research
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Virtual Conversation System -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,VTuber">
+                        <a href="https://anniversaryfes.nijisanji.jp/" target="_blank" class="block aspect-video bg-gradient-to-br from-pink-600/30 to-purple-600/30 flex items-center justify-center">
+                            <i class="fas fa-comments text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://anniversaryfes.nijisanji.jp/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Virtual Conversation System</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Lead Engineer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium">VTuber</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Interactive virtual conversation system used at major events including Nijisanji Festival (2021-2023) and Anime Expo 2019 in the Los Angeles, USA.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://anniversaryfes.nijisanji.jp/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-calendar mr-1.5"></i> NijiFes 2021
+                                </a>
+                                <a href="https://fes.nijisanji.jp/2022/attractions/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-calendar mr-1.5"></i> NijiFes 2022
+                                </a>
+                                <a href="https://fes.nijisanji.jp/2023/attraction/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-calendar mr-1.5"></i> NijiFes 2023
+                                </a>
+                                <a href="https://nanabunnonijyuuni-mobile.com/s/n110/artist/c7?ima=0458" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-user mr-1.5"></i> 22/7 Sakura
+                                </a>
+                                <a href="https://nanabunnonijyuuni-mobile.com/s/n110/artist/c1?ima=0505" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-user mr-1.5"></i> 22/7 Miyako
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Virtual Theater -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,Entertainment">
+                        <div class="aspect-video bg-gradient-to-br from-violet-600/30 to-fuchsia-600/30 flex items-center justify-center">
+                            <i class="fas fa-masks-theater text-5xl text-white/30"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Virtual Theater</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-violet-500/20 text-violet-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-violet-500/20 text-violet-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-violet-500/20 text-violet-400 rounded-full text-xs font-medium">Entertainment</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Virtual theater system for live VR performances and events, used by virtual youtubers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Rouba no Jumen -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,Attraction">
+                        <a href="https://www.kadinche.com/work/okao/" target="_blank" class="block aspect-video overflow-hidden">
+                            <img src="images/rouba-no-jumen.jpg" alt="Rouba no Jumen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div class="p-5">
+                            <a href="https://www.kadinche.com/work/okao/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Rouba no Jumen</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">Attraction</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">VR horror attraction experience. An immersive face-to-face encounter with the supernatural.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.kadinche.com/work/okao/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-briefcase mr-1.5"></i> Works
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hoshitori-ken -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="XR,VR,Quiz">
+                        <a href="https://www.kadinche.com/work/%e6%98%9f%e5%8f%96%e7%9c%8c/" target="_blank" class="block aspect-video bg-gradient-to-br from-yellow-600/30 to-amber-600/30 flex items-center justify-center">
+                            <i class="fas fa-star text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://www.kadinche.com/work/%e6%98%9f%e5%8f%96%e7%9c%8c/" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Hoshitori-ken</h3></a>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-medium">XR</span>
+                                <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-medium">VR</span>
+                                <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-medium">Quiz</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">VR quiz experience themed around star-gazing in Tottori prefecture. Interactive educational VR content.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://www.kadinche.com/work/%e6%98%9f%e5%8f%96%e7%9c%8c/" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-briefcase mr-1.5"></i> Works
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Personal / OSS -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="personal">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Personal / OSS</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">Ongoing</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- SOAR -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="OSS,Unity">
+                        <a href="https://github.com/ripandy/SOAR" target="_blank" class="block aspect-video overflow-hidden">
+                            <img src="images/SOAR_icon.png" alt="SOAR" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div class="p-5">
+                            <a href="https://github.com/ripandy/SOAR" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">SOAR</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">OSS</span>
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">ScriptableObject Architecture w/ R3. A robust framework for decoupling systems in Unity with cleaner code and better testability.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/ripandy/SOAR" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fab fa-github mr-1.5"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kassets -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="OSS,Unity">
+                        <a href="https://github.com/kadinche/Kassets" target="_blank" class="block aspect-video bg-gradient-to-br from-blue-600/30 to-indigo-600/30 flex items-center justify-center">
+                            <i class="fas fa-code text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://github.com/kadinche/Kassets" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Kassets</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">OSS</span>
+                                <span class="px-2 py-0.5 bg-accent/20 text-accent rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">ScriptableObject-based architecture framework for Unity. The predecessor to SOAR, enabling decoupled and testable game systems.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/kadinche/Kassets" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fab fa-github mr-1.5"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chatbot -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="AI,R&D,Unity">
+                        <div class="aspect-video bg-gradient-to-br from-emerald-600/30 to-teal-600/30 flex items-center justify-center">
+                            <i class="fas fa-robot text-5xl text-white/30"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Chatbot</h3>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium">AI</span>
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium">R&D</span>
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">R&D project integrating generative AI chatbot capabilities into Unity applications for interactive conversational experiences.</p>
+                        </div>
+                    </div>
+
+                    <!-- To Kill A Dragon -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,RPG,Unity">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/4dRh46oLRMk" title="To Kill A Dragon" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">To Kill A Dragon</h3>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">RPG</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">A personal RPG project built in Unity. An adventure to slay the dragon and save the realm.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Jogress -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Unreal Engine 5">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/aTvVu4Pc-6o" title="Project Jogress" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Project Jogress</h3>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Unreal Engine 5</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">A personal game project built in Unreal Engine 5, exploring next-gen game development workflows.</p>
+                        </div>
+                    </div>
+
+                    <!-- Cubenets -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Game Jam,Unity">
+                        <a href="https://unityroom.com/games/cubenets" target="_blank" class="block aspect-video bg-gradient-to-br from-cyan-600/30 to-blue-600/30 flex items-center justify-center">
+                            <i class="fas fa-cube text-5xl text-white/30"></i>
+                        </a>
+                        <div class="p-5">
+                            <a href="https://unityroom.com/games/cubenets" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Cubenets</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">Game Jam</span>
+                                <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">A game jam entry built in Unity. A cube-based puzzle game created within a tight deadline.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://unityroom.com/games/cubenets" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-play mr-1.5"></i> Play
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Good Luck Hero -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Puzzle RPG,Unity">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/CNM5JF73qlw" title="Good Luck Hero" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <a href="https://ripandy.itch.io/good-luck-hero" target="_blank"><h3 class="text-lg font-bold text-white mb-2 hover:text-accent transition-colors">Good Luck Hero</h3></a>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Puzzle RPG</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">A puzzle RPG built in Unity. Combine luck and strategy to defeat monsters and progress through the adventure.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://ripandy.itch.io/good-luck-hero" target="_blank" class="text-accent hover:text-white text-sm font-medium inline-flex items-center transition-colors">
+                                    <i class="fas fa-play mr-1.5"></i> Play
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Octrise (2018) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="octrise">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Octrise</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2018</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Fireworks Simulator -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Simulation,Unity,Tools">
+                        <div class="aspect-video bg-gradient-to-br from-amber-600/30 to-red-600/30 flex items-center justify-center">
+                            <i class="fas fa-wand-magic-sparkles text-5xl text-white/30"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Fireworks Simulator</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded-full text-xs font-medium">Simulation</span>
+                                <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded-full text-xs font-medium">Unity</span>
+                                <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded-full text-xs font-medium">Tools</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Fireworks simulation tool built in Unity. Focused on particle systems and custom editor tools for firework creation.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Rolling Glory (2018) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="rolling-glory">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Rolling Glory</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2018</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Boci Adventures -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,Children">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/FH6vc9ssZrk" title="Boci Adventures" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Boci Adventures</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Game Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Children</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Mobile children's adventure game. Interactive storytelling application ported from Cocos2D to Unity.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mind Mind -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,Unity">
+                        <div class="aspect-video bg-gradient-to-br from-teal-600/30 to-green-600/30 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-5xl text-white/30"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Mind Mind</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Game Programmer</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-teal-500/20 text-teal-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-teal-500/20 text-teal-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-teal-500/20 text-teal-400 rounded-full text-xs font-medium">Unity</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Mobile game built in Unity. Maintained and developed features for this mobile gaming title.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Aruline Studio (2012 - 2017) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-20" data-company="aruline">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Aruline Studio</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2012 - 2017</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Asal Mula Namaku -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Interactive,Mobile,Children">
+                        <div class="aspect-video bg-gradient-to-br from-sky-600/30 to-indigo-600/30 flex items-center justify-center">
+                            <i class="fas fa-book-open text-5xl text-white/30"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Asal Mula Namaku</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Co-Founder & Lead</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-sky-500/20 text-sky-400 rounded-full text-xs font-medium">Interactive</span>
+                                <span class="px-2 py-0.5 bg-sky-500/20 text-sky-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-sky-500/20 text-sky-400 rounded-full text-xs font-medium">Children</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Interactive children's storytelling mobile application. An educational experience about the origin of names.</p>
+                        </div>
+                    </div>
+
+                    <!-- Royal Match Maker -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,Java">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/rHL0Hz3Urr8" title="Royal Match Maker" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Royal Match Maker</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Co-Founder & Lead</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Java</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">A mobile match-making game set in a royal kingdom. Developed with Java for mobile platforms.</p>
+                        </div>
+                    </div>
+
+                    <!-- Knight of Hope -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,Action RPG">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/fsLzKbCb8Ec" title="Knight of Hope" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Knight of Hope</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Co-Founder & Lead</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Action RPG</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Mobile action RPG. A hack-and-slash adventure game developed and managed through the full production lifecycle.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- Whappa Games (2011 - 2012) -->
+            <!-- ============================================ -->
+            <div class="company-section mb-10" data-company="whappa">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                    <h2 class="text-2xl font-bold text-white whitespace-nowrap">Whappa Games</h2>
+                    <span class="text-accent font-mono text-sm whitespace-nowrap">2011 - 2012</span>
+                    <div class="h-px flex-1 bg-slate-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Asylon World -->
+                    <div class="project-card bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden hover:border-accent transition-all group" data-tags="Game,Mobile,RPG">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/EJtWQM4xin4" title="Asylon World" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">Asylon World</h3>
+                            <p class="text-gray-400 text-xs mb-2 font-medium">Co-Founder</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Game</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">Mobile</span>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">RPG</span>
+                            </div>
+                            <p class="text-textGray text-sm mb-4">Mobile RPG released on Android platforms. My first commercial game title, built at the very start of my career.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker py-8 border-t border-slate-800 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-gray-500 text-sm mb-2">Designed & Built by Ripandy Adha Yusuf.</p>
+            <p class="text-gray-500 text-sm">&copy; 2026 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterProjects(tag) {
+            const cards = document.querySelectorAll('.project-card');
+            const sections = document.querySelectorAll('.company-section');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-accent', 'text-white');
+                btn.classList.add('text-gray-300');
+                if (btn.dataset.filter === tag) {
+                    btn.classList.add('bg-accent', 'text-white');
+                    btn.classList.remove('text-gray-300');
+                }
+            });
+
+            // Filter cards
+            cards.forEach(card => {
+                const tags = card.dataset.tags || '';
+                if (tag === 'all' || tags.split(',').some(t => t.trim().includes(tag))) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Hide sections with no visible cards
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.project-card:not([style*="display: none"])');
+                section.style.display = visibleCards.length > 0 ? '' : 'none';
+            });
+        }
+    </script>
+
+</body>
+</html>
